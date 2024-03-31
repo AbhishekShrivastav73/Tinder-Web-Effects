@@ -81,36 +81,45 @@ function select(elem){
 }
 
 let curr = 0;
+let isAnimating = false;
 
-function setInitials(){
-    select('.noti h6').textContent = users[curr].pendingMessage;
-    select('.main img').src = users[curr].img;
-    select('.incoming img').src = users[curr+1]?.img;
-    select('#location h5').textContent = users[curr].location;
-    select('.mainDetail h1:nth-child(1)').textContent = users[curr].name;
+function setData(index){
+    select('.noti h6').textContent = users[index].pendingMessage;
+    select('#location h5').textContent = users[index].location;
+    select('.mainDetail h1:nth-child(1)').textContent = users[index].name;
 
     let clutter = '';
-    users[curr].interests.forEach(function(elems){
+    users[index].interests.forEach(function(elems){
         clutter += `<div class="flex items-center bg-white/40 w-fit px-4 gap-2 rounded-xl mt-4 py-1" >
         ${elems.icon}
         <h4 class="text-md">${elems.title}</h4>
     </div>`
     })
     select('.hobbies').innerHTML = clutter;
-    select('.bio p').textContent = users[curr].bio;
+    select('.bio p').textContent = users[index].bio;
+}
 
+function setInitials(){
+
+    select('.main img').src = users[curr].img;
+    select('.incoming img').src = users[curr+1]?.img;
+    
+    setData(curr)
+    curr = 2;
 }
 setInitials()
 
 function changeImg(){
-
+    if(!isAnimating){
+        isAnimating = true;
+        
     let mainCard = select('.main');
     let incomingCard = select('.incoming');
 
     let tl = gsap.timeline({
         onComplete : function(){
-            alert()
-            
+            // alert()
+            isAnimating =false;
             incomingCard.classList.remove("z-[4]");
             incomingCard.classList.add("z-[5]");
             incomingCard.classList.remove("incoming");
@@ -121,6 +130,11 @@ function changeImg(){
                 scale : 1,
                 opacity : 1
             })
+
+            if(curr === users.length) curr=0;
+            select('.main img').src = users[curr].img;
+            curr++;
+
             incomingCard.classList.add("main");
 
             mainCard.classList.remove('main')
@@ -137,13 +151,45 @@ function changeImg(){
         scale : 1.2,
         opacity : 0,
         ease : Circ,
-        duration : .9
+        duration : 1.2
     },'start')
+}
 }
 
 let deny = select('.deny');
 let accept = select('.accept');
 
 deny.addEventListener('click', function(){
-    changeImg()
+    changeImg();
+    setData(curr-1)
+    gsap.from('.details .element',{
+        y:'100%',
+        opacity : 0,
+        ease : Power4.easeInOut,
+        duration : 1.3,
+        stagger : 0.1
+    })
 })
+accept.addEventListener('click', function(){
+    changeImg();
+    setData(curr-1)
+    gsap.from('.details .element',{
+        y:'100%',
+        opacity : 0,
+        ease : Power4.easeInOut,
+        duration : 1.3,
+        stagger : 0.1
+    })
+})
+
+
+function createContainer(){
+    document.querySelectorAll('.element').forEach(function(e){
+        let div = document.createElement('div');
+        div.classList.add(`${e.classList[1]}Container`,'overflow-hidden');
+        div.appendChild(e);
+        select('.details').appendChild(div);
+    })
+}
+createContainer()
+
