@@ -9,15 +9,23 @@
     rel="stylesheet"
 />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .detailContainer{
+            background: linear-gradient(to bottom ,transparent,black);
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper w-full h-screen">
         <div class="imgContainer w-full h-screen bg-red-400 relative">
             <div class="main z-[5] w-full h-screen bg-green-300 absolute">
-                <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1601288496920-b6154fe3626a?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                <img class="w-full h-full object-cover" src="" alt="">
             </div>
-            <div class="incoming z-[4] w-full h-screen bg-yellow-300 absolute"></div>
+            <div class="incoming z-[4] w-full h-screen bg-yellow-300 absolute">
+                <img class="w-full h-full object-cover" src="" alt="">
+            </div>
         </div>
+        
         <div class=" w-full h-screen absolute bg-black/30 z-[12] top-0 left-0 text-white flex flex-col justify-between">
             <nav class="flex items-center justify-between px-4 py-6">
                 <div class="w-[3rem] rounded-full h-[3rem] bg-red-500 overflow-hidden">
@@ -31,41 +39,34 @@
                     </div>
                 </div>
             </nav>
-            <div class="details w-full px-4 py-3">
-                <div id="location" class="flex items-center gap-2">
-                    <div class="w-8 h-8 flex items-center justify-center font-bold rounded-full bg-white text-black "><i class="ri-corner-left-up-line"></i></div>
-                    <h5>USA, CALIFORNIA</h5>
-                </div>
-                <div class="flex items-end gap-2">
-                    <h1 class="text-7xl font-semibold">Victoria</h1>
-                    <h1 class="text-7xl font-semibold opacity-60">20</h1>
-                </div>
-                <div class="hobbies flex items-center gap-2">
-                    <div class="flex items-center bg-white/40 w-fit px-4 gap-2 rounded-xl mt-4 py-1" >
-                        <i class="ri-music-fill"></i>
-                        <h4 class="text-md">Music</h4>
+            <div class="detailContainer">
+                <div class="details w-full px-4 py-3">
+                    <div id="location" class="flex items-center gap-2">
+                        <div class="w-8 h-8 flex items-center justify-center font-bold rounded-full bg-white text-black "><i class="ri-corner-left-up-line"></i></div>
+                        <h5>USA, CALIFORNIA</h5>
                     </div>
-                    <div class="flex items-center bg-white/40 w-fit px-4 gap-2 rounded-xl mt-4 py-1" >
-                        <i class="ri-music-fill"></i>
-                        <h4 class="text-md">Music</h4>
+                    <div class="mainDetail flex items-end gap-2">
+                        <h1 class="text-7xl font-semibold">Victoria</h1>
+                        <h1 class="text-7xl font-semibold opacity-60">20</h1>
                     </div>
-                    <div class="flex items-center bg-white/40 w-fit px-4 gap-2 rounded-xl mt-4 py-1" >
-                        <i class="ri-music-fill"></i>
-                        <h4 class="text-md">Music</h4>
+                    <div class="hobbies flex items-center gap-2">
+                        
+                       
                     </div>
-                </div>
-                <div class="bio mt-3">
-                    <h3 class="text-2xl">Bio</h3>
-                    <p class="text-xl mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nisi debitis. Lorem ipsum dolor sit.</p>
-                </div>
-                <div class="flex gap-2 items-center mt-4">
-                    <button class="w-1/2 px-4 py-4 bg-white text-black text-2xl rounded-xl" ><i class="ri-close-line"></i></button>
-                    <button class="w-1/2 px-4 py-4 bg-red-500 text-2xl rounded-xl"><i class="ri-heart-3-fill"></i></button>
+                    <div class="bio mt-3">
+                        <h3 class="text-2xl">Bio</h3>
+                        <p class="text-xl mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nisi debitis. Lorem ipsum dolor sit.</p>
+                    </div>
+                    <div class="flex gap-2 items-center mt-4">
+                        <button class="w-1/2 px-4 py-4 bg-white text-black text-2xl rounded-xl" ><i class="ri-close-line"></i></button>
+                        <button class="w-1/2 px-4 py-4 bg-red-500 text-2xl rounded-xl"><i class="ri-heart-3-fill"></i></button>
+                    </div>
                 </div>
             </div>
+           
         </div>
     </div>
-
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="script.js"></script>
 </body>
 </html>
