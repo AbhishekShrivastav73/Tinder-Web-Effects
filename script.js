@@ -82,7 +82,7 @@ function select(elem){
 
 let curr = 0;
 
-(function setInitials(){
+function setInitials(){
     select('.noti h6').textContent = users[curr].pendingMessage;
     select('.main img').src = users[curr].img;
     select('.incoming img').src = users[curr+1]?.img;
@@ -99,4 +99,51 @@ let curr = 0;
     select('.hobbies').innerHTML = clutter;
     select('.bio p').textContent = users[curr].bio;
 
-})()
+}
+setInitials()
+
+function changeImg(){
+
+    let mainCard = select('.main');
+    let incomingCard = select('.incoming');
+
+    let tl = gsap.timeline({
+        onComplete : function(){
+            alert()
+            
+            incomingCard.classList.remove("z-[4]");
+            incomingCard.classList.add("z-[5]");
+            incomingCard.classList.remove("incoming");
+
+            mainCard.classList.remove('z-[5]');  
+            mainCard.classList.add('z-[4]');  
+            gsap.set(mainCard,{
+                scale : 1,
+                opacity : 1
+            })
+            incomingCard.classList.add("main");
+
+            mainCard.classList.remove('main')
+            mainCard.classList.add('incoming')
+        }
+    });
+    tl.to('.main',{
+        scale : 1.2,
+        opacity : 0,
+        ease : Circ,
+        duration : .9
+    },'start')
+    .from('.incoming',{
+        scale : 1.2,
+        opacity : 0,
+        ease : Circ,
+        duration : .9
+    },'start')
+}
+
+let deny = select('.deny');
+let accept = select('.accept');
+
+deny.addEventListener('click', function(){
+    changeImg()
+})
