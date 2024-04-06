@@ -1,6 +1,6 @@
 # Tinder-Web-Effects
 
-A stunning and responsive landing page created with HTML and CSS to showcase a modern and clean design for your projects.
+A stunning and responsive landing page created with HTML, CSS  and JS to showcase a modern and clean design for your projects.
 
 ## Table of Contents
 
